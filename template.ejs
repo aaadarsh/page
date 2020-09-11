@@ -1,0 +1,26 @@
+<% if (pageCount > 1) { %>
+    <ul class="pagination">
+<% if (currentPage > 1) { %>
+                              <li><a href="/userdetails?page=1">&laquo;</a></li>
+              <% } %>
+              <% var i = 1;
+              if (currentPage > 5) {
+                              i = +currentPage - 4;
+              } %>
+              <% if (i !== 1) { %>
+                              <li class="disabled"><a href="#">...</a></li>
+              <% } %>
+<% for (var j = i; j<=pageCount; j++) { %>
+              <% if (currentPage == j) { %>
+                              <li class="active"><span><%= j %> <span class="sr-only">(current)</span></span></li>
+              <% } else { %>
+                              <li><a href="/userdetails?page=<%= j %>"><%= j %></a></li>
+              <% } %>
+              <% if (j == (+currentPage + 4)) { %>
+                              <li class="disabled"><a href="#">...</a></li>
+              <% break; } %>
+              <% } %>
+<% if (currentPage != pageCount) { %>
+                              <li><a href="/userdetails?page=<%= pageCount %>">&raquo;</a></li>
+              <% } %>
+ </ul>  <% } %>
